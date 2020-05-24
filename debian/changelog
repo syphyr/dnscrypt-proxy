@@ -1,4 +1,4 @@
-dnscrypt-proxy (2.0.42~ppa2) bionic; urgency=medium
+dnscrypt-proxy (2.0.42~ppa2b) bionic; urgency=medium
 
   * The current versions of the dnsdist load balancer (presumably used by quad9, cleanbrowsing, qualityology, freetsa.org, ffmuc.net, opennic-bongobow, sth-dnscrypt-se, ams-dnscrypt-nl and more) is preventing queries over 1500 bytes from being received over UDP.
   * Temporary workarounds have been introduced to improve reliability with these resolvers for regular DNSCrypt. Unfortunately, anonymized DNS cannot be reliable until the issue is fixed server-side.
