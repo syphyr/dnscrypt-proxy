@@ -1,0 +1,18 @@
+Source: dnscrypt-proxy
+Section: net
+Priority: optional
+Maintainer: Andrei Shevchuk <andrei@shevchuk.co>
+Build-Depends: debhelper (>= 10),
+               dh-golang,
+               golang (<< 2:1.14~) | golang-1.13,
+               golang (>= 2:1.12~) | golang-1.13,
+               sed (>= 4)
+Standards-Version: 4.1.1
+Homepage: https://dnscrypt.info
+
+Package: dnscrypt-proxy
+Architecture: any
+Depends: lsb-base (>= 3.0-6), ${misc:Depends}, ${shlibs:Depends}
+Suggests: ca-certificates
+Built-Using: ${misc:Built-Using}
+Description: A flexible DNS proxy, with support for modern encrypted DNS protocols such as DNSCrypt v2 and DNS-over-HTTP/2.
