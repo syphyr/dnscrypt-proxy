@@ -5,8 +5,8 @@ Before=nss-lookup.target
 Wants=nss-lookup.target
 
 [Socket]
-ListenStream=127.0.2.1:53
-ListenDatagram=127.0.2.1:53
+ListenStream=127.0.0.1:53
+ListenDatagram=127.0.0.1:53
 NoDelay=true
 DeferAcceptSec=1
 
