@@ -3,9 +3,6 @@ Section: net
 Priority: optional
 Maintainer: Andrei Shevchuk <andrei@shevchuk.co>
 Build-Depends: debhelper (>= 10),
-               dh-golang,
-               golang (<< 2:1.14~) | golang-1.13,
-               golang (>= 2:1.12~) | golang-1.13,
                sed (>= 4)
 Standards-Version: 4.1.1
 Homepage: https://dnscrypt.info
