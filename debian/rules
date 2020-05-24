@@ -1,0 +1,28 @@
+#!/usr/bin/make -f
+
+PROJECT = dnscrypt-proxy
+OUT = ${CURDIR}/debian/${PROJECT}
+CFG = ${OUT}/etc/${PROJECT}
+
+export DH_OPTIONS
+export DH_GOPKG := github.com/DNSCrypt/dnscrypt-proxy
+export GOCACHE := ${CURDIR}/.cache
+export GOFLAGS := -ldflags=-w -ldflags=-s -mod=vendor
+export PATH := /usr/lib/go/bin:/usr/lib/go-1.13/bin:${PATH}
+
+%:
+	dh $@ --buildsystem=golang --with=golang
+
+override_dh_auto_install:
+	dh_auto_install --destdir="${OUT}"
+	install -Dm644 "${PROJECT}/example-dnscrypt-proxy.toml" "${CFG}/${PROJECT}.toml"
+	install -Dm644 "${PROJECT}/example-forwarding-rules.txt" "${CFG}/example-forwarding-rules.txt"
+	install -Dm644 "${PROJECT}/example-blacklist.txt" "${CFG}/example-blacklist.txt"
+	install -Dm644 "${PROJECT}/example-cloaking-rules.txt" "${CFG}/example-cloaking-rules.txt"
+	install -Dm644 "${CURDIR}/debian/dnscrypt-proxy.dnsmasq" "${OUT}/etc/dnsmasq.d/dnscrypt-proxy"
+
+	sed -ri "s/^listen_addresses.+/listen_addresses = []/" "${CFG}/${PROJECT}.toml"
+
+override_dh_auto_test:
+
+override_dh_dwz:
