@@ -20,7 +20,7 @@ override_dh_auto_build:
 	cd dnscrypt-proxy && go env && go build
 
 override_dh_auto_clean:
-	cd dnscrypt-proxy && go clean
+	cd dnscrypt-proxy && go clean && go clean -cache
 
 override_dh_auto_install:
 	dh_auto_install --destdir="${OUT}"
