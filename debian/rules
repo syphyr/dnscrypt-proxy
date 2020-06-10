@@ -26,7 +26,6 @@ override_dh_auto_install:
 	install -Dm644 "${PROJECT}/example-forwarding-rules.txt" "${CFG}/example-forwarding-rules.txt"
 	install -Dm644 "${PROJECT}/example-blacklist.txt" "${CFG}/example-blacklist.txt"
 	install -Dm644 "${PROJECT}/example-cloaking-rules.txt" "${CFG}/example-cloaking-rules.txt"
-	install -Dm644 "${CURDIR}/debian/dnscrypt-proxy.dnsmasq" "${OUT}/etc/dnsmasq.d/dnscrypt-proxy"
 
 	sed -ri "s/^listen_addresses.+/listen_addresses = []/" "${CFG}/${PROJECT}.toml"
 
