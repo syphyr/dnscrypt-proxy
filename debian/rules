@@ -9,9 +9,6 @@ export DH_GOPKG := github.com/DNSCrypt/dnscrypt-proxy
 export GOCACHE := ${CURDIR}/.cache
 export GOFLAGS := -ldflags=-w -ldflags=-s -mod=vendor
 export PATH := /usr/local/src/golang/go/bin:${PATH}
-export GOOS := linux
-export GOARCH := amd64
-export CGO_ENABLED := 1
 
 %:
 	dh $@
