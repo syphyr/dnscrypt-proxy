@@ -24,7 +24,9 @@ override_dh_auto_install:
 	install -Dm755 "${PROJECT}/dnscrypt-proxy" "${OUT}/usr/bin/dnscrypt-proxy"
 	install -Dm644 "${PROJECT}/example-dnscrypt-proxy.toml" "${CFG}/${PROJECT}.toml"
 	install -Dm644 "${PROJECT}/example-forwarding-rules.txt" "${CFG}/example-forwarding-rules.txt"
-	install -Dm644 "${PROJECT}/example-blacklist.txt" "${CFG}/example-blacklist.txt"
+	install -Dm644 "${PROJECT}/example-blocked-ips.txt" "${CFG}/example-blocked-ips.txt"
+	install -Dm644 "${PROJECT}/example-blocked-names.txt" "${CFG}/example-blocked-names.txt"
+	install -Dm644 "${PROJECT}/example-allowed-names.txt" "${CFG}/example-allowed-names.txt"
 	install -Dm644 "${PROJECT}/example-cloaking-rules.txt" "${CFG}/example-cloaking-rules.txt"
 
 	sed -ri "s/^listen_addresses.+/listen_addresses = []/" "${CFG}/${PROJECT}.toml"
