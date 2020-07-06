@@ -30,3 +30,7 @@ internetbrands.com
 # Ubuntu's motd script sends way too much information to Canonical
 
 motd.ubuntu.com
+
+# This site is sending out malware
+
+blockchaintop.nl
