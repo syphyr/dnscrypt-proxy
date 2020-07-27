@@ -16,7 +16,7 @@ func (proxy *Proxy) addSystemDListeners() error {
 		if len(proxy.userName) > 0 || proxy.child {
 			dlog.Fatal("Systemd activated sockets are incompatible with privilege dropping. Remove activated sockets and fill `listen_addresses` in the dnscrypt-proxy configuration file instead.")
 		}
-		dlog.Warn("Systemd sockets are untested and unsupported - use at your own risk")
+		dlog.Notice("Using systemd sockets")
 	}
 	for i, file := range files {
 		defer file.Close()
