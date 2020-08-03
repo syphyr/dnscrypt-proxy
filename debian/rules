@@ -28,6 +28,7 @@ override_dh_auto_install:
 	install -Dm644 "${PROJECT}/example-blocked-names.txt" "${CFG}/example-blocked-names.txt"
 	install -Dm644 "${PROJECT}/example-allowed-names.txt" "${CFG}/example-allowed-names.txt"
 	install -Dm644 "${PROJECT}/example-cloaking-rules.txt" "${CFG}/example-cloaking-rules.txt"
+	install -Dm644 "${PROJECT}/example-captive-portal-handler.txt" "${CFG}/example-captive-portal-handler.txt"
 
 	sed -ri "s/^listen_addresses.+/listen_addresses = []/" "${CFG}/${PROJECT}.toml"
 
