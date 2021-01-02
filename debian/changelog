@@ -1,3 +1,9 @@
+dnscrypt-proxy (2.0.45~ppa2b) bionic; urgency=medium
+
+  * More updates
+
+ -- syphyr <syphyr@gmail.com>  Sat, 02 Jan 2021 19:46:24 +0100
+
 dnscrypt-proxy (2.0.44~ppa2b) bionic; urgency=medium
 
   * More updates to the set of block lists, thanks again to IceCodeNew.
