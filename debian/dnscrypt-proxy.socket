@@ -5,10 +5,10 @@ Before=nss-lookup.target
 Wants=nss-lookup.target
 
 [Socket]
-ListenStream=127.0.0.1:5454
-ListenDatagram=127.0.0.1:5454
-ListenStream=[::1]:5454
-ListenDatagram=[::1]:5454
+ListenStream=127.0.0.1:53
+ListenDatagram=127.0.0.1:53
+ListenStream=[::1]:53
+ListenDatagram=[::1]:53
 BindIPv6Only=both
 NoDelay=true
 DeferAcceptSec=1
