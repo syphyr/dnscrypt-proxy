@@ -14,7 +14,7 @@ export PATH := /usr/local/src/golang/go/bin:${PATH}
 	dh $@
 
 override_dh_auto_build:
-	cd dnscrypt-proxy && go env && go build
+	cd dnscrypt-proxy && go env -changed && go build
 
 override_dh_auto_clean:
 	cd dnscrypt-proxy && go clean && go clean -cache
