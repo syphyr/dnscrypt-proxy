@@ -33,6 +33,3 @@ override_dh_auto_install:
 
 	sed -ri "s/^listen_addresses.+/listen_addresses = []/" "${CFG}/${PROJECT}.toml"
 
-override_dh_auto_test:
-
-override_dh_dwz:
