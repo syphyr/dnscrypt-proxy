@@ -11,7 +11,11 @@ RemainAfterExit=true
 ExecStart=/bin/sh -c 'systemctl show dnscrypt-proxy.socket \
                     | grep "Listen.*Datagram" \
                     | cut -d "=" -f 2 \
-                    | cut -d ":" -f 1 \
+                    | rev \
+                    | cut -d ":" -f 2- \
+                    | rev \
+                    | sed \'s/\\[//\' \
+                    | sed \'s/\\]//\' \
                     | awk \'{ print "nameserver " $1 }\' \
                     | /sbin/resolvconf -a lo.dnscrypt-proxy'
 ExecStop=/sbin/resolvconf -d lo.dnscrypt-proxy
