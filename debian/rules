@@ -21,7 +21,6 @@ override_dh_auto_clean:
 
 override_dh_auto_install:
 	dh_auto_install --destdir="${OUT}"
-	install -Dm644 debian/dnscrypt-proxy-resolvconf.service "${OUT}/lib/systemd/system/dnscrypt-proxy-resolvconf.service"
 	install -Dm755 "${PROJECT}/dnscrypt-proxy" "${OUT}/usr/bin/${PROJECT}"
 	install -Dm644 "${PROJECT}/example-dnscrypt-proxy.toml" "${CFG}/${PROJECT}.toml"
 	install -Dm644 "${PROJECT}/example-forwarding-rules.txt" "${CFG}/example-forwarding-rules.txt"
