@@ -1,3 +1,9 @@
+dnscrypt-proxy (2.1.14~ppa1b) bionic; urgency=medium
+
+  * Stable release
+
+ -- syphyr <syphyr@gmail.com>  Wed, 03 Sep 2025 19:26:31 +0200
+
 dnscrypt-proxy (2.1.13~ppa1b) bionic; urgency=medium
 
   * Stable release
