@@ -9,6 +9,7 @@ Wants=nss-lookup.target
 [Service]
 NonBlocking=true
 ExecStart=/usr/bin/dnscrypt-proxy --config /etc/dnscrypt-proxy/dnscrypt-proxy.toml
+ExecReload=/bin/kill -HUP ${MAINPID}
 ProtectHome=yes
 ProtectControlGroups=yes
 ProtectKernelModules=yes
