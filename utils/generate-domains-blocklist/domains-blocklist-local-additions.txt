@@ -31,7 +31,6 @@ internetbrands.com
 
 motd.ubuntu.com
 
-# These sites are sending out malware
+# Block signal auto updates and use fdroid instead
 
-blockchaintop.nl
-weaveradrenaline.com
+updates.signal.org
