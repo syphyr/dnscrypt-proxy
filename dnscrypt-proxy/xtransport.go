@@ -775,6 +775,11 @@ func (xTransport *XTransport) Fetch(
 				dlog.Debugf("Alt-Svc [%s]: [%s]", url.Host, alt)
 				altPort := uint16(port & 0xffff)
 				for i, xalt := range alt {
+					if strings.TrimSpace(xalt) == "clear" {
+						dlog.Debugf("Alt-Svc clear for [%s] - HTTP/3 not available", url.Host)
+						altPort = 0
+						break
+					}
 					for j, v := range strings.Split(xalt, ";") {
 						if i >= 8 || j >= 16 {
 							break
