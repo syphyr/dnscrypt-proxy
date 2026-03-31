@@ -18,6 +18,9 @@ on:
 
 name: GitHub CI
 
+permissions:
+  contents: write
+
 jobs:
   build:
     name: Build
