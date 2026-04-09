@@ -515,6 +515,9 @@ func findFarthestRoute(proxy *Proxy, name string, relayStamps []stamps.ServerSta
 			}
 			candidates = append(candidates, relayIdx)
 		}
+		if len(candidates) == 0 {
+			return nil
+		}
 		return &relayStamps[candidates[rand.Intn(len(candidates))]]
 	} else if server.stamp.Proto != stamps.StampProtoTypeDNSCrypt {
 		return nil
@@ -556,8 +559,10 @@ func findFarthestRoute(proxy *Proxy, name string, relayStamps []stamps.ServerSta
 				break
 			}
 		}
-		if samePrefixBits <= bestRelaySamePrefixBits {
+		if samePrefixBits < bestRelaySamePrefixBits {
 			bestRelaySamePrefixBits = samePrefixBits
+			bestRelayIdxs = []int{relayIdx}
+		} else if samePrefixBits == bestRelaySamePrefixBits {
 			bestRelayIdxs = append(bestRelayIdxs, relayIdx)
 		}
 	}

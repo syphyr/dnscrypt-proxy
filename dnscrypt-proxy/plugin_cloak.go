@@ -117,10 +117,18 @@ func (plugin *PluginCloak) loadRules(lines string, patternMatcher *PatternMatche
 
 		var ptrLine string
 		if ipv4 := ip.To4(); ipv4 != nil {
-			reversed, _ := reverseAddr(ip.To4().String())
+			reversed, err := reverseAddr(ipv4.String())
+			if err != nil {
+				dlog.Errorf("Failed to reverse IPv4 address at line %d: %v", lineNo+1, err)
+				continue
+			}
 			ptrLine = strings.TrimSuffix(reversed, ".")
 		} else {
-			reversed, _ := reverseAddr(cloakedName.ipv6[0].String())
+			reversed, err := reverseAddr(cloakedName.ipv6[0].String())
+			if err != nil {
+				dlog.Errorf("Failed to reverse IPv6 address at line %d: %v", lineNo+1, err)
+				continue
+			}
 			ptrLine = strings.TrimSuffix(reversed, ".")
 		}
 		ptrQueryLine := ptrEntryToQuery(ptrLine)

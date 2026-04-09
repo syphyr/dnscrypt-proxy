@@ -157,7 +157,7 @@ func configureDoHClientAuth(proxy *Proxy, config *Config) error {
 		dlog.Noticef("Enabling TLS authentication")
 		configClientCred := dohClientCreds[0]
 		if len(dohClientCreds) > 1 {
-			dlog.Fatal("Only one tls_client_auth entry is currently supported")
+			dlog.Fatal("Only one doh_client_x509_auth entry is currently supported")
 		}
 		proxy.xTransport.tlsClientCreds = DOHClientCreds{
 			clientCert: configClientCred.ClientCert,
@@ -188,7 +188,7 @@ func configureServerParams(proxy *Proxy, config *Config) {
 	// Configure certificate refresh parameters
 	proxy.certRefreshConcurrency = Max(1, config.CertRefreshConcurrency)
 	proxy.certRefreshDelay = time.Duration(Max(60, config.CertRefreshDelay)) * time.Minute
-	proxy.certRefreshDelayAfterFailure = time.Duration(10 * time.Second)
+	proxy.certRefreshDelayAfterFailure = 10 * time.Second
 	proxy.certIgnoreTimestamp = config.CertIgnoreTimestamp
 	proxy.ephemeralKeys = config.EphemeralKeys
 	proxy.monitoringUI = config.MonitoringUI
@@ -335,7 +335,7 @@ func configureBlockedNames(proxy *Proxy, config *Config) error {
 // configureAllowedNames - Configures allowed names
 func configureAllowedNames(proxy *Proxy, config *Config) error {
 	if len(config.AllowedName.File) > 0 && len(config.WhitelistNameLegacy.File) > 0 {
-		return errors.New("Don't specify both [whitelist] and [allowed_names] sections - Update your config file")
+		return errors.New("Don't specify both [allowed_names] and [whitelist] sections - Update your config file")
 	}
 	if len(config.WhitelistNameLegacy.File) > 0 {
 		dlog.Notice("Use of [whitelist] is deprecated - Update your config file")
