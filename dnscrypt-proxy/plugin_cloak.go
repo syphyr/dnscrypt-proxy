@@ -175,28 +175,31 @@ func (plugin *PluginCloak) PrepareReload() error {
 		return fmt.Errorf("error reading config file during reload preparation: %w", err)
 	}
 
-	// Create new staging pattern matcher
-	plugin.stagingMatcher = NewPatternMatcher()
+	stagingMatcher := NewPatternMatcher()
 
 	// Load rules into staging matcher
-	if err := plugin.loadRules(lines, plugin.stagingMatcher); err != nil {
+	if err := plugin.loadRules(lines, stagingMatcher); err != nil {
 		return fmt.Errorf("error parsing config during reload preparation: %w", err)
 	}
+
+	plugin.Lock()
+	plugin.stagingMatcher = stagingMatcher
+	plugin.Unlock()
 
 	return nil
 }
 
 // ApplyReload atomically replaces the active pattern matcher with the staging one
 func (plugin *PluginCloak) ApplyReload() error {
+	plugin.Lock()
+	defer plugin.Unlock()
+
 	if plugin.stagingMatcher == nil {
 		return errors.New("no staged configuration to apply")
 	}
 
-	// Use write lock to swap pattern matchers
-	plugin.Lock()
 	plugin.patternMatcher = plugin.stagingMatcher
 	plugin.stagingMatcher = nil
-	plugin.Unlock()
 
 	dlog.Noticef("Applied new configuration for plugin [%s]", plugin.Name())
 	return nil
@@ -204,7 +207,9 @@ func (plugin *PluginCloak) ApplyReload() error {
 
 // CancelReload cleans up any staging resources
 func (plugin *PluginCloak) CancelReload() {
+	plugin.Lock()
 	plugin.stagingMatcher = nil
+	plugin.Unlock()
 }
 
 // Reload implements hot-reloading for the plugin
