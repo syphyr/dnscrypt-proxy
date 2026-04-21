@@ -653,10 +653,16 @@ func (xTransport *XTransport) Fetch(
 
 	if xTransport.h3Transport != nil {
 		if xTransport.http3Probe {
-			// Always try HTTP/3 first when http3_probe is enabled,
-			// without checking for Alt-Svc
-			client.Transport = xTransport.h3Transport
-			dlog.Debugf("Probing HTTP/3 transport for [%s]", url.Host)
+			xTransport.altSupport.RLock()
+			altPort, inNegativeCache := xTransport.altSupport.cache[url.Host]
+			inNegativeCache = inNegativeCache && altPort == 0
+			xTransport.altSupport.RUnlock()
+			if !inNegativeCache {
+				client.Transport = xTransport.h3Transport
+				dlog.Debugf("Probing HTTP/3 transport for [%s]", url.Host)
+			} else {
+				dlog.Debugf("Skipping HTTP/3 probe for [%s] - previously failed", url.Host)
+			}
 		} else {
 			// Otherwise use traditional Alt-Svc detection
 			xTransport.altSupport.RLock()
