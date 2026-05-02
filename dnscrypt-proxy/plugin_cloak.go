@@ -106,7 +106,7 @@ func (plugin *PluginCloak) loadRules(lines string, patternMatcher *PatternMatche
 			}
 			cloakedName.isIP = true
 		} else {
-			cloakedName.target = target
+			cloakedName.target = strings.ToLower(target)
 		}
 		cloakedName.lineNo = lineNo + 1
 		cloakedNames[line] = cloakedName
@@ -146,6 +146,25 @@ func (plugin *PluginCloak) loadRules(lines string, patternMatcher *PatternMatche
 		if err := patternMatcher.Add(line, cloakedName, cloakedName.lineNo); err != nil {
 			return err
 		}
+	}
+
+	var firstRecursive *CloakedName
+	var firstRecursivePattern string
+	for _, cloakedName := range cloakedNames {
+		if cloakedName.isIP || cloakedName.target == "" {
+			continue
+		}
+		matched, pattern, _ := patternMatcher.Eval(cloakedName.target)
+		if matched && (firstRecursive == nil || cloakedName.lineNo < firstRecursive.lineNo) {
+			firstRecursive = cloakedName
+			firstRecursivePattern = pattern
+		}
+	}
+	if firstRecursive != nil {
+		return fmt.Errorf(
+			"recursive cloaking rule at line %d: target [%s] matches cloak pattern [%s]",
+			firstRecursive.lineNo, firstRecursive.target, firstRecursivePattern,
+		)
 	}
 
 	return nil
