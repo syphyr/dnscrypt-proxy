@@ -24,9 +24,6 @@ override_dh_auto_build:
 override_dh_auto_clean:
 	cd dnscrypt-proxy && go clean && go clean -cache
 
-execute_after_dh_installsystemd:
-	dh_installsystemd --name dnscrypt-proxy-resolvconf
-
 override_dh_auto_install:
 	install -Dm755 "${PROJECT}/dnscrypt-proxy" "${OUT}/usr/sbin/${PROJECT}"
 	install -Dm644 "${PROJECT}/example-dnscrypt-proxy.toml" "${CFG}/${PROJECT}.toml"
