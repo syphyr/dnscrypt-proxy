@@ -1,0 +1,31 @@
+Source: dnscrypt-proxy
+Section: net
+Priority: optional
+Maintainer: Eric Dorland <eric@debian.org>
+Build-Depends:
+ debhelper-compat (= 13),
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+Testsuite: autopkgtest-pkg-go
+Homepage: https://github.com/DNSCrypt/dnscrypt-proxy
+Vcs-Git: https://salsa.debian.org/eric/dnscrypt-proxy.git
+Vcs-Browser: https://salsa.debian.org/eric/dnscrypt-proxy
+XS-Go-Import-Path: github.com/DNSCrypt/dnscrypt-proxy
+
+Package: dnscrypt-proxy
+Architecture: any
+Multi-Arch: foreign
+Depends:
+ adduser,
+ sysvinit-utils (>= 3.05-4~),
+ ${misc:Depends},
+ ${shlibs:Depends},
+Recommends:
+ ca-certificates,
+Suggests:
+ resolvconf,
+Breaks:
+ dnscrypt-proxy-plugins (<< 2),
+Description: Flexible DNS proxy, with support for encrypted DNS protocols
+ dnscrypt-proxy is a flexible DNS proxy, with support for modern encrypted DNS
+ protocols such as DNSCrypt v2 and DNS-over-HTTPS.

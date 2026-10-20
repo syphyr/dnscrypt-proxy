@@ -1,0 +1,9 @@
+dnscrypt-proxy/example-dnscrypt-proxy.toml
+dnscrypt-proxy/example-allowed-ips.txt
+dnscrypt-proxy/example-allowed-names.txt
+dnscrypt-proxy/example-blocked-ips.txt
+dnscrypt-proxy/example-blocked-names.txt
+dnscrypt-proxy/example-captive-portals.txt
+dnscrypt-proxy/example-cloaking-rules.txt
+dnscrypt-proxy/example-dnscrypt-proxy.toml
+dnscrypt-proxy/example-forwarding-rules.txt

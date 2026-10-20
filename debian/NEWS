@@ -1,0 +1,18 @@
+dnscrypt-proxy (2.0.16-2) unstable; urgency=medium
+
+  The 2.0 series of dnscrypt-proxy has been rewritten in Go, has support
+  for DNS-over-TLS and DNS-over-HTTPS, and has a completely different
+  configuration file format, now found in
+  /etc/dnscrypt-proxy/dnscrypt-proxy.toml. No attempt to convent the old
+  config file to the new one has been made.
+
+ -- Eric Dorland <eric@debian.org>  Thu, 02 Aug 2018 23:07:34 -0400
+
+dnscrypt-proxy (1.8.1-3) unstable; urgency=medium
+
+  As of this version the /etc/default/dnscrypt-proxy is no longer used
+  and there is a proper configuration file at
+  /etc/dnscrypt-proxy/dnscrypt-proxy.conf.
+
+ -- Eric Dorland <eric@debian.org>  Sat, 24 Dec 2016 01:08:01 -0500
+

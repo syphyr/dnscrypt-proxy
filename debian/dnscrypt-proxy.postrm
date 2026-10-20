@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+[ "$1" = "purge" -a -d "/etc/dnscrypt-proxy/dnscrypt-proxy.conf.dpkg-bak" ] && \
+    rm -rf /etc/dnscrypt-proxy/dnscrypt-proxy.conf.dpkg-bak
+
+#DEBHELPER#
+
+exit 0

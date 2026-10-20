@@ -1,0 +1,515 @@
+dnscrypt-proxy (2.1.18+ds1-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- syphyr <syphyr@gmail.com>  Tue, 20 Oct 2026 06:12:07 +0200
+
+dnscrypt-proxy (2.1.14+ds1-1) unstable; urgency=medium
+
+  * New upstream release
+  * Add build dep on golang-github-jedisct1-go-ipcrypt-dev
+
+ -- Eric Dorland <eric@debian.org>  Sat, 27 Sep 2025 20:03:58 -0400
+
+dnscrypt-proxy (2.1.13+ds1-1) unstable; urgency=medium
+
+  * New upstream release
+  * Drop some unnecessary builddeps
+  * Add build-dep on golang-github-jedisct1-go-sieve-cache-dev
+  * Add build-dep on golang-github-fsnotify-fsnotify-dev
+  * Add build-dep on golang-github-gorilla-websocket-dev
+  * Install files under static/ as well
+
+ -- Eric Dorland <eric@debian.org>  Tue, 19 Aug 2025 10:41:31 -0400
+
+dnscrypt-proxy (2.1.8+ds1-1) unstable; urgency=medium
+
+  * New upstream release
+  * run wrap-and-sort -ast
+
+ -- Eric Dorland <eric@debian.org>  Mon, 07 Apr 2025 14:25:48 -0400
+
+dnscrypt-proxy (2.1.7+ds1-1) unstable; urgency=medium
+
+  * New upstream release (Closes: 1093448)
+  * Add new build deps
+
+ -- Eric Dorland <eric@debian.org>  Mon, 24 Feb 2025 23:17:02 -0500
+
+dnscrypt-proxy (2.1.5+ds1-2) unstable; urgency=medium
+
+  * Drop unneeded build dependency on golang-ed25519-dev (Closes: 1087021)
+  * Standards-Version to 4.7.0
+  * Add Recommends on ca-certificates (Closes: 987624)
+
+ -- Eric Dorland <eric@debian.org>  Thu, 09 Jan 2025 00:58:30 -0500
+
+dnscrypt-proxy (2.1.5+ds1-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #1025847, #1057816)
+  * Update build dependencies
+
+ -- Eric Dorland <eric@debian.org>  Wed, 08 Jan 2025 00:44:31 -0500
+
+dnscrypt-proxy (2.0.45+ds1-1.2) unstable; urgency=medium
+
+  * Non-maintainer upload.
+
+  [ Helmut Grohne ]
+  * Install systemd units only once using dh_installsystemd. (Closes:
+    #1054087)
+
+ -- Chris Hofstaedtler <zeha@debian.org>  Tue, 12 Dec 2023 02:50:09 +0100
+
+dnscrypt-proxy (2.0.45+ds1-1.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+
+  [ Debian Janitor ]
+  * Remove constraints unnecessary since buster
+    * dnscrypt-proxy: Drop versioned constraint on lsb-base in Depends.
+    * Remove 4 maintscript entries from 1 files.
+    Changes-By: deb-scrub-obsolete
+
+  [ Anthony Fok ]
+  * Add missing build-dependency on golang-any. This fixes the FTBFS error
+    “Can't exec "go": No such file or directory” (Closes: #1031187)
+  * Use dh-sequence-golang instead of dh-golang and --with=golang
+  * Invoke dh with --builddirectory=_build
+  * Move DH_GOPKG in debian/rules to XS-Go-Import-Path in debian/control
+  * Add Static-Built-Using field in debian/control
+  * Replace dependency on lsb-base with sysvinit-utils (>= 3.05-4~)
+    to fix Lintian error "depends-on-obsolete-package Depends: lsb-base"
+  * Bump Standards-Version to 4.6.2 (no change)
+
+ -- Anthony Fok <foka@debian.org>  Sat, 25 Mar 2023 08:24:36 -0600
+
+dnscrypt-proxy (2.0.45+ds1-1) unstable; urgency=medium
+
+  * New upstream release
+  * Remove asterisks from NEWS file
+  * Standards-Version to 4.5.1.0
+  * Update example files
+
+ -- Eric Dorland <eric@debian.org>  Tue, 12 Jan 2021 00:52:29 -0500
+
+dnscrypt-proxy (2.0.44+ds1-3) unstable; urgency=medium
+
+  * Delete /etc/dnscrypt-proxy/dnscrypt-proxy.conf.dpkg-bak/ on purge
+    (Closes: 965995)
+  * Upgrade debhelper to compat level 13
+
+ -- Eric Dorland <eric@debian.org>  Sun, 13 Sep 2020 01:53:31 -0400
+
+dnscrypt-proxy (2.0.44+ds1-2) unstable; urgency=medium
+
+  * Force build-dep  on golang-github-jedisct1-dlog-dev >= 0.6
+  * Add compression=xz to watch file
+
+ -- Eric Dorland <eric@debian.org>  Thu, 02 Jul 2020 13:52:20 -0400
+
+dnscrypt-proxy (2.0.44+ds1-1) unstable; urgency=medium
+
+  * New upstream release
+  * Add Testsuite: autopkgtest-pkg-go
+  * Add [dch] stanza to gbp.conf
+
+ -- Eric Dorland <eric@debian.org>  Sun, 28 Jun 2020 17:43:03 -0400
+
+dnscrypt-proxy (2.0.39+ds1-2) unstable; urgency=medium
+
+  * Standards-Version to 4.5.0.2
+  * Add debian/source/metadata
+  * Rename NEWS file correctly
+  * Add https to packaging manual link
+
+ -- Eric Dorland <eric@debian.org>  Mon, 22 Jun 2020 00:53:29 -0400
+
+dnscrypt-proxy (2.0.39+ds1-1) unstable; urgency=medium
+
+  * New upstream release (Closes: 951527)
+  * Drop copyright entries for files that are no longer in the source
+  * Add new build dependencies
+
+ -- Eric Dorland <eric@debian.org>  Sun, 21 Jun 2020 02:46:55 -0400
+
+dnscrypt-proxy (2.0.31+ds1-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Eric Dorland <eric@debian.org>  Sun, 03 Nov 2019 19:08:09 -0500
+
+dnscrypt-proxy (2.0.19+ds1-3) unstable; urgency=medium
+
+  [ Andrei Shevchuk ]
+  * Support new 'systemctl show' format in resolvconf integration service
+    (Closes: 942047)
+
+  [ Eric Dorland ]
+  * Update Standards-Version to 4.4.1.1
+  * Switch upstream to https://github.com/DNSCrypt/dnscrypt-proxy/
+
+ -- Eric Dorland <eric@debian.org>  Sun, 03 Nov 2019 01:17:59 -0400
+
+dnscrypt-proxy (2.0.19+ds1-2) unstable; urgency=medium
+
+  * debhelper-compat = 12
+  * Add standard ci file for salsa gitlab
+  * Add Rules-Requires-Root: no
+  * Remove article from package description
+  * Add version to dnscrypt-proxy-plugins Breaks
+  * Standards-Version to 4.3.0.1
+  * Add not-installed file for usr/share/gocode/src/*
+  * Disable dh_dwz since it fails
+
+ -- Eric Dorland <eric@debian.org>  Thu, 17 Jan 2019 02:24:45 -0500
+
+dnscrypt-proxy (2.0.19+ds1-1) unstable; urgency=medium
+
+  * New upstream release
+  * Drop dh-systemd build-dep, no longer needed
+  * Excluded vendor/ and repack the tarball
+  * Update package description
+  * Add correct build deps
+
+ -- Eric Dorland <eric@debian.org>  Sun, 25 Nov 2018 02:20:21 -0500
+
+dnscrypt-proxy (2.0.16-2) unstable; urgency=medium
+
+  * Target back to unstable (Closes: 894280)
+  * Add NEWS message about the 2.0 series
+  * Remove old dnscrypt-proxy.conf file
+
+ -- Eric Dorland <eric@debian.org>  Thu, 02 Aug 2018 23:24:08 -0400
+
+dnscrypt-proxy (2.0.16-1) experimental; urgency=medium
+
+  * New upstream release.
+  * Switch to debhelper 11
+  * Standards-Version to 4.1.5
+  * Reenable socket activation and privilege dropping
+
+ -- Eric Dorland <eric@debian.org>  Thu, 02 Aug 2018 22:26:45 -0400
+
+dnscrypt-proxy (2.0.6-2) experimental; urgency=medium
+
+  * Fix server_names config parameter
+  * Disable socket activation and privilege dropping for the moment
+
+ -- Eric Dorland <eric@debian.org>  Thu, 02 Aug 2018 00:25:04 -0400
+
+dnscrypt-proxy (2.0.6-1) experimental; urgency=medium
+
+  * New upstream release, go rewrite. (Closes: #814961, #888811)
+  * Drop old patches
+  * Drop no longer used signing key
+  * Update watch file for new github location
+  * Drop no longer needed dnscrypt-proxy-plugins package
+  * Update Vcs-* fields to salsa and Homepage to github
+  * Update doc and example files
+  * Switch to dh-golang and add go build deps
+  * Update systemd files for new binary
+  * Create new TOML config
+  * Update install paths
+
+ -- Eric Dorland <eric@debian.org>  Sun, 22 Jul 2018 15:19:37 -0400
+
+dnscrypt-proxy (1.9.5-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Eric Dorland <eric@debian.org>  Sun, 18 Jun 2017 15:31:53 -0400
+
+dnscrypt-proxy (1.9.4-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/dnscrypt-proxy-resolvconf.service: Fix quoting problems. Thanks
+    François de Metz. (Closes: #852364)
+
+ -- Eric Dorland <eric@debian.org>  Tue, 24 Jan 2017 14:42:31 -0500
+
+dnscrypt-proxy (1.9.3-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/dnscrypt-proxy-resolvconf.service: Add forgotten "nameserver"
+    string.
+
+ -- Eric Dorland <eric@debian.org>  Wed, 18 Jan 2017 12:58:08 -0500
+
+dnscrypt-proxy (1.9.2-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Eric Dorland <eric@debian.org>  Wed, 18 Jan 2017 01:14:35 -0500
+
+dnscrypt-proxy (1.9.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/patches/0001-Document-127.0.2.1-is-the-default-address.patch:
+    Refresh patch.
+
+ -- Eric Dorland <eric@debian.org>  Mon, 02 Jan 2017 22:05:53 -0500
+
+dnscrypt-proxy (1.8.1-4) unstable; urgency=medium
+
+  * debian/dnscrypt-proxy.install, debian/dnscrypt-proxy.maintscript: Fix
+    erroneously install location of config file. (Closes: #849334)
+
+ -- Eric Dorland <eric@debian.org>  Mon, 26 Dec 2016 00:52:25 -0500
+
+dnscrypt-proxy (1.8.1-3) unstable; urgency=medium
+
+  * debian/dnscrypt-proxy.init, debian/dnscrypt-proxy.maintscript: Remove
+    init file for now, hard to do both with the config file.
+  * debian/NEWS.Debian, debian/dnscrypt-proxy.conf,
+    debian/dnscrypt-proxy.default,
+    debian/dnscrypt-proxy-resolvconf.service,
+    debian/dnscrypt-proxy.install, debian/dnscrypt-proxy.maintscript,
+    debian/dnscrypt-proxy.service: Switch to new configuration file, drop
+    default file.
+
+ -- Eric Dorland <eric@debian.org>  Sat, 24 Dec 2016 01:14:01 -0500
+
+dnscrypt-proxy (1.8.1-2) unstable; urgency=medium
+
+  * debian/dnscrypt-proxy.service: Add a number of privilege dropping
+    directives.
+  * debian/dnscrypt-proxy.examples: Add example config file.
+  * debian/dnscrypt-proxy.docs: Add protocol document.
+
+ -- Eric Dorland <eric@debian.org>  Fri, 23 Dec 2016 16:04:32 -0500
+
+dnscrypt-proxy (1.8.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/dnscrypt-proxy.service: Rationalize with upstream service file.
+
+ -- Eric Dorland <eric@debian.org>  Fri, 23 Dec 2016 02:45:11 -0500
+
+dnscrypt-proxy (1.8.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/compat, debian/control, debian/rules: Use debhelper 10.
+  * debian/control: Add depends on lsb-base for init file.
+
+ -- Eric Dorland <eric@debian.org>  Sun, 18 Dec 2016 02:31:37 -0500
+
+dnscrypt-proxy (1.7.0+dfsg-1) unstable; urgency=medium
+
+  * Repack tarball to remove
+    dist-build/android-files/META-INF/com/google/android/update-binary,
+    that is distributed without source.
+  * debian/rules: Remove dependency_libs in .la files in
+    dnscrypt-proxy-plugins.
+
+ -- Eric Dorland <eric@debian.org>  Sun, 09 Oct 2016 07:29:37 -0400
+
+dnscrypt-proxy (1.7.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/dnscrypt-proxy.default: Switch from cisco resolver to
+    fvz-anyone. (Closes: #781648)
+
+ -- Eric Dorland <eric@debian.org>  Sat, 13 Aug 2016 02:45:10 -0400
+
+dnscrypt-proxy (1.6.1-2) unstable; urgency=medium
+
+  * debian/dnscrypt-proxy.socket: Drop incorrect
+    After=network.target. Thanks Simon McVittie. (Closes: #832933)
+  * debian/control, debian/dnscrypt-proxy-plugins.docs,
+    debian/dnscrypt-proxy-plugins.install, debian/dnscrypt-proxy.docs,
+    debian/dnscrypt-proxy.install, debian/rules: Add
+    dnscrypt-proxy-plugins package. (Closes: #820979)
+  * debian/control: Standards-Version to 3.9.8.
+  * debian/patches/0001-Document-127.0.2.1-is-the-default-address.patch:
+    Document that 127.0.2.1 is the default address. (Closes: #814206)
+  * debian/control: Add build dependency on ruby-ronn.
+
+ -- Eric Dorland <eric@debian.org>  Sat, 30 Jul 2016 01:09:44 -0400
+
+dnscrypt-proxy (1.6.1-1) unstable; urgency=high
+
+  * New upstream release. Fixes potential code execution vulnerability
+    from malformed packets.
+  * debian/control: Update Hompage and Vcs-* fields to use https.
+  * debian/docs: Drop removed TECHNOTES.
+
+ -- Eric Dorland <eric@debian.org>  Fri, 12 Feb 2016 01:15:27 -0500
+
+dnscrypt-proxy (1.6.0-2) unstable; urgency=medium
+
+  * debian/dnscrypt-proxy.default, debian/dnscrypt-proxy.init,
+    debian/dnscrypt-proxy.service: Switch default resolver from "opendns"
+    to renamed "cisco".
+
+ -- Eric Dorland <eric@debian.org>  Wed, 29 Jul 2015 00:24:17 -0400
+
+dnscrypt-proxy (1.6.0-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Eric Dorland <eric@debian.org>  Sat, 25 Jul 2015 01:58:20 -0400
+
+dnscrypt-proxy (1.5.0-1) unstable; urgency=medium
+
+  * New upstream release. (Closes: #787655)
+  * debian/gbp.conf: Set upstream-vcs-tag.
+
+ -- Eric Dorland <eric@debian.org>  Sun, 14 Jun 2015 01:49:50 -0400
+
+dnscrypt-proxy (1.4.3-4) unstable; urgency=medium
+
+  * debian/dnscrypt-proxy.init: Fix syntax error. Thanks Ivan Vilata i
+    Balaguer. (Closes: #783226)
+  * debian/dnscrypt-proxy-resolvconf.service: Move
+    ConditionFileIsExecutable to the correct Unit section. (Closes:
+    #783168)
+
+ -- Eric Dorland <eric@debian.org>  Sun, 26 Apr 2015 02:17:30 -0400
+
+dnscrypt-proxy (1.4.3-3) unstable; urgency=medium
+
+  * debian/dnscrypt-proxy.service: Mark sockets as NonBlocking as required
+    by the proxy.
+  * debian/dnscrypt-proxy.service: Switch to notify type and have systemd
+    switch users.
+  * debian/dnscrypt-proxy.tmpfile: Drop since we don't need to write a pid
+    file anymore.
+  * debian/dnscrypt-proxy-resolvconf.service, debian/dnscrypt-proxy.init,
+    debian/dnscrypt-proxy.socket, debian/rules: Add service for resolvconf
+    support.
+
+ -- Eric Dorland <eric@debian.org>  Sun, 12 Apr 2015 18:34:56 -0400
+
+dnscrypt-proxy (1.4.3-2) unstable; urgency=medium
+
+  * debian/dnscrypt-proxy.service: Fix missing \ in command-line. (Closes:
+    #780021)
+  * debian/dnscrypt-proxy.service: Switch the Type to "simple" as
+    notification does not seem to be working properly.
+
+ -- Eric Dorland <eric@debian.org>  Mon, 09 Mar 2015 16:01:30 -0400
+
+dnscrypt-proxy (1.4.3-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/watch: Watch .gz file, it's the only one with signatures.
+  * debian/control: Add Build-Depends on libsystemd-dev.
+  * debian/control: Run wrap-and-sort.
+  * debian/control: Add Build-Depends on pkg-config.
+  * debian/rules: Fix typo in dh_installinit command.
+
+ -- Eric Dorland <eric@debian.org>  Sat, 07 Mar 2015 22:44:49 -0500
+
+dnscrypt-proxy (1.4.2-1) UNRELEASED; urgency=medium
+
+  * New upstream release.
+  * debian/rules: Use --restart-after-upgrade for dh_installinit and
+    dh_systemd_start.
+  * debian/control: Build with --with-systemd.
+  * debian/dnscrypt-proxy.default, debian/dnscrypt-proxy.service,
+    debian/dnscrypt-proxy.socket: Use socket activation.
+  * debian/gbp.conf: Use pristine-tar.
+
+ -- Eric Dorland <eric@debian.org>  Sat, 07 Mar 2015 22:32:47 -0500
+
+dnscrypt-proxy (1.4.1-3) unstable; urgency=medium
+
+  * debian/dnscrypt-proxy.tmpfile: Fix typo in the path.
+  * debian/dnscrypt-proxy.service: Fix quoting of --user argument.
+
+ -- Eric Dorland <eric@debian.org>  Sat, 29 Nov 2014 21:31:22 -0500
+
+dnscrypt-proxy (1.4.1-2) unstable; urgency=medium
+
+  * debian/control: Run wrap-and-sort.
+  * debian/control: Standards-Version to 3.9.6.
+  * debian/dnscrypt-proxy.init: Untabify.
+  * debian/dnscrypt-proxy.init: We don't actually support reload, so drop it.
+  * debian/control: Add Vcs-* headers.
+  * debian/control: Add Multi-Arch field.
+  * debian/dnscrypt-proxy.init: Fix typo in user field.
+  * debian/dnscrypt-proxy.default, debian/dnscrypt-proxy.init: Switch to
+    listening on 127.0.2.1:53.
+  * debian/dnscrypt-proxy.service, debian/dnscrypt-proxy.tmpfile,
+    debian/control, debian/rules: Add service file and use dh-systemd.
+  * debian/upstream/signing-key.asc, debian/watch: Add watch file.
+
+ -- Eric Dorland <eric@debian.org>  Sat, 29 Nov 2014 21:14:39 -0500
+
+dnscrypt-proxy (1.4.1-1) unstable; urgency=medium
+
+  * Initial debian release. (Closes: #692320)
+  * debian/control: Switch maintainer to myself and drop Vcs-* fields.
+  * debian/postrm, debian/preinst: Drop.
+  * debian/copyright: Add libevent-modified licenses, add myself to debian/*.
+  * debian/dnscrypt-proxy.upstart: Drop.
+  * debian/dnscrypt-proxy.default, debian/dnscrypt-proxy.init: Rewrite
+    init script.
+  * debian/dnscrypt-proxy.postinst: Add _dnscrypt-proxy user.
+
+ -- Eric Dorland <eric@debian.org>  Sun, 23 Nov 2014 15:23:21 -0500
+
+dnscrypt-proxy (1.3.3-1) unstable; urgency=low
+
+  * New upstream release
+  * Added .defaults file with configuration, updated Upstart job accordingly
+  * Now builds with --disable-ltdl-install --without-included-ltdl parameters
+  * Specified the documentation to include explicitly in docs file
+
+ -- Sergey "Shnatsel" Davidoff <shnatsel@gmail.com>  Sun, 03 Nov 2013 18:20:39 +0400
+
+dnscrypt-proxy (1.3.1-0~shnatsel6~precise2) precise; urgency=low
+
+  * Fixed some essential libraries not being allowed by apparmor
+
+ -- Sergey "Shnatsel" Davidoff <shnatsel@gmail.com>  Wed, 17 Jul 2013 18:38:04 +0400
+
+dnscrypt-proxy (1.3.1-0~shnatsel5~precise2) precise; urgency=low
+
+  * Fixed path in AppArmor profile that prevented it from activation
+
+ -- Sergey "Shnatsel" Davidoff <shnatsel@gmail.com>  Mon, 15 Jul 2013 13:36:24 +0400
+
+dnscrypt-proxy (1.3.1-0~shnatsel4~precise2) precise; urgency=low
+
+  * Removed block_suspend capability from AppArmor profile to make it work on Precise
+
+ -- Sergey "Shnatsel" Davidoff <shnatsel@gmail.com>  Sun, 07 Jul 2013 11:31:59 +0400
+
+dnscrypt-proxy (1.3.1-0~shnatsel4~precise1) precise; urgency=low
+
+  * New upstream release
+
+ -- Sergey "Shnatsel" Davidoff <shnatsel@gmail.com>  Sun, 07 Jul 2013 11:31:59 +0400
+
+dnscrypt-proxy (1.3.0-0~shnatsel4~precise1) precise; urgency=low
+
+  * Updated AppArmor profile
+
+ -- Sergey "Shnatsel" Davidoff <shnatsel@gmail.com>  Sun, 07 Jul 2013 10:23:14 +0400
+
+dnscrypt-proxy (1.3.0-0~shnatsel3~precise1) precise; urgency=low
+
+  * Added AppArmor profile for even greater security
+
+ -- Sergey "Shnatsel" Davidoff <shnatsel@gmail.com>  Sat, 06 Jul 2013 21:01:30 +0400
+
+dnscrypt-proxy (1.3.0-0~shnatsel2~precise1) precise; urgency=low
+
+  * Fixed a bug with postrm failing for no real reason
+
+ -- Sergey "Shnatsel" Davidoff <shnatsel@gmail.com>  Fri, 05 Jul 2013 20:03:09 +0400
+
+dnscrypt-proxy (1.3.0-0~shnatsel1~precise1) precise; urgency=low
+
+  * Added an upstart job to autostart dnscrypt-proxy
+  * dnscrypt-proxy now runs as unprivileged user
+
+ -- Sergey "Shnatsel" Davidoff <shnatsel@gmail.com>  Thu, 13 Jun 2013 01:34:05 +0400
+
+dnscrypt-proxy (1.3.0-1) raring; urgency=low
+
+  * Initial release (Closes: #692320)
+
+ -- MrTux <mrtux@ubuntu-vn.org>  Wed, 22 May 2013 02:54:27 +0700

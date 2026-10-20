@@ -1,0 +1,46 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+PROJECT = dnscrypt-proxy
+OUT = ${CURDIR}/debian/${PROJECT}
+CFG = ${OUT}/etc/${PROJECT}
+
+export DH_OPTIONS
+export DH_GOPKG := github.com/DNSCrypt/dnscrypt-proxy
+export GOCACHE := ${CURDIR}/.cache
+export GOFLAGS := -v -ldflags=-w -ldflags=-s -mod=vendor
+export DH_OPTIONS
+export DH_GOLANG_INSTALL_EXTRA := dnscrypt-proxy/static/
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	cd dnscrypt-proxy && go env -changed && go build
+
+override_dh_auto_clean:
+	cd dnscrypt-proxy && go clean && go clean -cache
+
+execute_after_dh_installsystemd:
+	dh_installsystemd --name dnscrypt-proxy-resolvconf
+
+override_dh_auto_install:
+	install -Dm755 "${PROJECT}/dnscrypt-proxy" "${OUT}/usr/sbin/${PROJECT}"
+	install -Dm644 "${PROJECT}/example-dnscrypt-proxy.toml" "${CFG}/${PROJECT}.toml"
+	install -Dm644 "${PROJECT}/example-forwarding-rules.txt" "${CFG}/example-forwarding-rules.txt"
+	install -Dm644 "${PROJECT}/example-blocked-ips.txt" "${CFG}/example-blocked-ips.txt"
+	install -Dm644 "${PROJECT}/example-blocked-names.txt" "${CFG}/example-blocked-names.txt"
+	install -Dm644 "${PROJECT}/example-allowed-names.txt" "${CFG}/example-allowed-names.txt"
+	install -Dm644 "${PROJECT}/example-cloaking-rules.txt" "${CFG}/example-cloaking-rules.txt"
+	install -Dm644 "${PROJECT}/example-captive-portals.txt" "${CFG}/example-captive-portals.txt"
+	install -Dm644 "${PROJECT}/example-allowed-ips.txt" "${CFG}/example-allowed-ips.txt"
+	sed -ri "s/^listen_addresses.+/listen_addresses = []/" "${CFG}/${PROJECT}.toml"
+
+# Tests may fail on build servers and aren't useful in release builds anyway
+override_dh_auto_test:
+
+# dwz appears to choke on dnscrypt-proxy at the moment
+override_dh_dwz:
